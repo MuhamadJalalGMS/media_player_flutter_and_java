@@ -1,0 +1,14 @@
+{
+  "@@last_modified": "2019-04-23T09:10:31.347138",
+  "title": "شغل الوسائط",
+  "@title": {
+    "description": "The application title",
+    "type": "text",
+    "placeholders": {}
+  },
+  "hello": "مرحبا",
+  "@hello": {
+    "type": "text",
+    "placeholders": {}
+  }
+}
