@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:media_player/api_call/track_api_call.dart';
 import 'package:http/http.dart' as http;
 import 'package:media_player/app_localization/app_localization.dart';
 import 'package:media_player/model/track_model.dart';
 import 'dart:convert';
-import 'package:unicorndial/unicorndial.dart';
+import 'package:menu/menu.dart';
 
 import '../values.dart';
 
@@ -14,6 +13,7 @@ class tracksScreen extends StatefulWidget {
 }
 
 class _tracksState extends State<tracksScreen> {
+
   /// create a constructor and set its parameter to be a list of the tracks which
   /// was retrieved from the main screen
   /// @tracksList
@@ -28,6 +28,7 @@ class _tracksState extends State<tracksScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     print('${AppLocalizations.of(context).debug}${_list.length}');
     return Scaffold(
 //      backgroundColor: primaryPurple,
@@ -40,38 +41,6 @@ class _tracksState extends State<tracksScreen> {
 
   /// set an object of trackModel to _listTileItem() as a parameter
   _listTileItem(int index) {
-    var childButtons = List<UnicornButton>();
-
-    childButtons.add(UnicornButton(
-        hasLabel: true,
-        labelText: "Choo choo",
-        currentButton: FloatingActionButton(
-          heroTag: "train",
-          backgroundColor: Colors.redAccent,
-          mini: true,
-          child: Icon(Icons.train),
-          onPressed: () {},
-        )));
-
-    childButtons.add(
-      UnicornButton(
-        currentButton: FloatingActionButton(
-          heroTag: "airplane",
-          backgroundColor: Colors.greenAccent,
-          mini: true,
-          child: Icon(Icons.airplanemode_active),
-          onPressed: (){print('kvsdkjf\n\n');},
-        ),
-      ),
-    );
-
-    childButtons.add(UnicornButton(
-        currentButton: FloatingActionButton(
-            heroTag: "directions",
-            backgroundColor: Colors.blueAccent,
-            mini: true,
-            child: Icon(Icons.directions_car))));
-
     return Container(
       margin: EdgeInsets.all(8.0),
       padding: EdgeInsets.all(5.0),
@@ -86,9 +55,8 @@ class _tracksState extends State<tracksScreen> {
                 Container(
                   margin: EdgeInsets.only(right: 8.0),
                   child:
-
-                      /// use ImageNetwork instead of icon
-                      Icon(
+                  /// use ImageNetwork instead of icon
+                  Icon(
                     Icons.album,
                     color: primaryIconColor,
                   ),
@@ -108,34 +76,34 @@ class _tracksState extends State<tracksScreen> {
               ],
             ),
             Align(
-              child: SizedBox.fromSize(
-                child: UnicornDialer(
-                  onMainButtonPressed: (){
-                    print(
-                        '${AppLocalizations.of(context).debug}Unicorn item Tapped\n');
-                  },
-                    backgroundColor: Colors.transparent,
-                    parentButtonBackground: Colors.redAccent,
-                    orientation: UnicornOrientation.HORIZONTAL,
-                    parentButton: Icon(
-                      Icons.more_vert,
-                      color: primaryIconColor,
-                    ),
-                    childButtons: childButtons),
-                size: Size(35, 35),
+              child: Menu(
+                clickType: ClickType.click,
+                child: Container(
+                  width: 35.0,
+                  height: 35.0,
+                  child: Icon(Icons.more_vert),
+                ),
+                items: [
+                  MenuItem("copy", () {print('${AppLocalizations.of(context).debug}Copy item Tapped\n\n');}),
+                  MenuItem("add", (){print('${AppLocalizations.of(context).debug}Add item Tapped\n\n');}),
+                ],
               ),
+
+
+//              Icon(
+//                Icons.more_vert,
+//                color: primaryIconColor,
+//              ),
               alignment: Alignment.centerRight,
             )
           ],
         ),
-        onTap: () {
-          print(
-              '${AppLocalizations.of(context).debug}${_list[index].id} item Tapped\n\n');
+        onTap: (){
+          print('${AppLocalizations.of(context).debug}${_list[index].id} item Tapped\n\n');
         },
       ),
     );
   }
-
 //  _listTileItem() {
 //    return Container(
 //      margin: EdgeInsets.all(8.0),
@@ -182,11 +150,13 @@ class _tracksState extends State<tracksScreen> {
 //    );
 //  }
 
+
   // request http data
   Future<String> getTracks() async {
     List<TrackData> tracksData = List();
 
-    var response = await http.get(Uri.encodeFull(tracksURL), headers: {
+    var response = await http
+        .get(Uri.encodeFull(tracksURL), headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     });
@@ -199,7 +169,7 @@ class _tracksState extends State<tracksScreen> {
 //      print('${AppLocalizations.of(context).debug}${TrackData.fromJson(item).title}\n\n');
       });
 
-      tracksData.forEach((t) {
+      tracksData.forEach((t){
         print('${AppLocalizations.of(context).debug}${t.title}\n\n');
       });
 
