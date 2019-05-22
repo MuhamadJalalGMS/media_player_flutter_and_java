@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 MaterialColor primaryAppColor =
-MaterialColor(0xFFFF784E, <int, Color>{50: Color(0xFFFF784E)});
+    MaterialColor(0xFFFF784E, <int, Color>{50: Color(0xFFFF784E)});
 
 Color mainColor = Color(0xFFFF784E);
 Color secondaryColor = Color(0xFFE84B3C);
@@ -16,14 +16,34 @@ Color primaryPurple = Color(0xFF2B0042);
 Color primaryWhite = Colors.grey[600];
 Color customWhite = Colors.white70;
 
-TextStyle trackTitleTextStyle = TextStyle(color: primaryTextColor, fontSize: 16.0, fontWeight: FontWeight.bold,);
-TextStyle trackSubtitleTextStyle = TextStyle(color: customGrey, fontSize: 12.0, fontWeight: FontWeight.bold,);
+//const Color accentColor = const Color(0xFFf08f8f);
+//const Color lightAccentColor = const Color(0xFFFFAFAF);
+//const Color darkAccentColor = const Color(0xFFD06F6F);
 
-TextStyle albumTitleTextStyle = TextStyle(color: primaryTextColor, fontSize: 16.0, fontWeight: FontWeight.bold,);
+TextStyle trackTitleTextStyle = TextStyle(
+  color: primaryTextColor,
+  fontSize: 16.0,
+  fontWeight: FontWeight.bold,
+);
+TextStyle trackSubtitleTextStyle = TextStyle(
+  color: customGrey,
+  fontSize: 12.0,
+  fontWeight: FontWeight.bold,
+);
 
-TextStyle videosTitleTextStyle = TextStyle(color: primaryTextColor, fontSize: 16.0, fontWeight: FontWeight.bold,);
+TextStyle albumTitleTextStyle = TextStyle(
+  color: primaryTextColor,
+  fontSize: 16.0,
+  fontWeight: FontWeight.bold,
+);
 
+TextStyle videosTitleTextStyle = TextStyle(
+  color: primaryTextColor,
+  fontSize: 16.0,
+  fontWeight: FontWeight.bold,
+);
 
 ///-----------------
 ///URls
 String tracksURL = 'https://hassanabdelwahab.naghmaty.app/api/tracks';
+String albumsURL = 'https://hassanabdelwahab.naghmaty.app/api/albums';

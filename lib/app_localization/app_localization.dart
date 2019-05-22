@@ -40,6 +40,9 @@ class AppLocalizations {
       'logout':'Log Out',
       'login':'Log In',
       'search':'Search...',
+
+
+      'label':'appLabel',
       'debug':'\n\nApplicationDebuging : '
     },
     'ar': {
@@ -51,6 +54,9 @@ class AppLocalizations {
       'logout':'خروج',
       'login':'تسجيل',
       'search':'بحث...',
+
+
+      'label':'appLabel',
       'debug':'\n\nApplicationDebuging : '
     },
   };
@@ -65,6 +71,7 @@ class AppLocalizations {
   String get logout => Intl.message(_localizedValues[locale.languageCode]['logout'], name: 'logout');
   String get login => Intl.message(_localizedValues[locale.languageCode]['login'], name: 'login');
   String get search => Intl.message(_localizedValues[locale.languageCode]['search'], name: 'search');
+  String get label => Intl.message(_localizedValues[locale.languageCode]['label'], name: 'label');
   String get debug => Intl.message(_localizedValues[locale.languageCode]['debug'], name: 'debug');
 
 }
